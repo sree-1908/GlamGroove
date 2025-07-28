@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Glam Groove</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles1.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo"><span class="pink">Glam</span> Groove</div>
+    <nav class="nav-links">
+      <a href="shop.html">Shop All</a>
+      <a href="#shop">Bestsellers</a>
+      <a href="#arrival">Collection</a>
+      <a href="#">About Us</a>
+      <a href="#blog">Blog</a>
+    </nav>
+    <div class="nav-icons">
+  <div class="icon-block">
+    <ion-icon name="search-outline"></ion-icon>
+  </div>
+  <div class="icon-block" id="accountIcon" onclick="handleAccountClick()">
+  <ion-icon name="person-outline"></ion-icon>
+  <span id="userInitial" class="user-initial" style="display: none;"></span>
+</div>
+
+  <div class="icon-block" onclick="toggleCart()">
+    <ion-icon name="cart-outline"></ion-icon>
+  </div>
+</div>
+
+  </header>
+
+  <!-- Sticky Carousel Section -->
+  <section class="carousel-section">
+    <div class="carousel">
+      <div class="list" id="carouselList">
+        <div class="item" style="transform: rotateY(0deg) translateZ(400px);">
+          <img src="images/1.png" alt="1">
+          <h2>"Beauty begins the moment you decide to be yourself."</h2>
+        </div>
+        <div class="item" style="transform: rotateY(120deg) translateZ(400px);">
+          <img src="images/2.png" alt="2">
+          <h2>"Glow inside and out."</h2>
+        </div>
+        <div class="item" style="transform: rotateY(240deg) translateZ(400px);">
+          <img src="images/3.png" alt="3">
+          <h2>"Radiate confidence every day."</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banner">
+    <div class="banner-content">
+      <div class="banner-text">
+        <h1>DISCOVER YOUR INNER BEAUTY<br>WITH BLOSSOM GLOW KIT</h1>
+        <p>Great gift for yourself and loved ones</p>
+        <a href="#shop" class="shop-btn">Shop Now</a>
+
+      </div>
+      <div class="banner-image">
+        <img src="images/4.png" alt="Blossom Glow Kit">
+      </div>
+    </div>
+  </section>
+  <!-- Bestsellers Section -->
+<section class="section shop" id="shop" aria-label="shop" data-section>
+  <div class="container">
+
+    <div class="title-wrapper">
+      <h2 class="h2 section-title">Our Bestsellers</h2>
+      <!-- Example: See All Products link -->
+
+
+      <a href="all-products1.html" class="btn-link" id="shopAllLink">
+        <span class="span">Shop All Products</span>
+        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+      </a>
+    </div>
+
+    <ul class="has-scrollbar">
+
+      <!-- Product 1 -->
+      <!-- Product 1 -->
+<li class="scrollbar-item">
+  <div class="shop-card">
+    <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+      <img src="images/cleanser.png" width="540" height="720" alt="Gentle Facial Cleanser" class="img-cover">
+      <span class="badge" aria-label="20% off">-20%</span>
+      <div class="card-actions">
+        <button class="action-btn" aria-label="add to cart" onclick="addToCart({ id: 'cleanser', name: 'Gentle Facial Cleanser', price: 960, image: 'images/cleanser.png' })">
+          <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="add to wishlist">
+          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="compare">
+          <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="price">
+        <del class="del">Rs.1200</del>
+        <span class="span">Rs.960</span>
+      </div>
+      <h3><a href="#" class="card-title">Gentle Facial Cleanser</a></h3>
+      <div class="card-rating">
+        <div class="rating-wrapper" aria-label="5 star rating">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div>
+        <p class="rating-text">4100 reviews</p>
+      </div>
+    </div>
+  </div>
+</li>
+
+<!-- Product 2 -->
+<li class="scrollbar-item">
+  <div class="shop-card">
+    <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+      <img src="images/serum.png" width="540" height="720" alt="Rejuvenating Face Serum" class="img-cover">
+      <div class="card-actions">
+        <button class="action-btn" aria-label="add to cart" onclick="addToCart({ id: 'serum', name: 'Rejuvenating Face Serum', price: 1450, image: 'images/serum.png' })">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="add to wishlist">
+          <ion-icon name="star-outline"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="compare">
+          <ion-icon name="repeat-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="price"><span class="span">Rs.1450</span></div>
+      <h3><a href="#" class="card-title">Rejuvenating Face Serum</a></h3>
+      <div class="card-rating">
+        <div class="rating-wrapper">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div>
+        <p class="rating-text">3580 reviews</p>
+      </div>
+    </div>
+  </div>
+</li>
+
+<!-- Product 3 -->
+<li class="scrollbar-item">
+  <div class="shop-card">
+    <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+      <img src="images/moisturizer.png" width="540" height="720" alt="Hydrating Moisturizer" class="img-cover">
+      <span class="badge">Best Seller</span>
+      <div class="card-actions">
+        <button class="action-btn" onclick="addToCart({ id: 'moisturizer', name: 'Hydrating Moisturizer', price: 1100, image: 'images/moisturizer.png' })">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </button>
+        <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+        <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="price"><span class="span">Rs.1100</span></div>
+      <h3><a href="#" class="card-title">Hydrating Moisturizer</a></h3>
+      <div class="card-rating">
+        <div class="rating-wrapper">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div>
+        <p class="rating-text">6270 reviews</p>
+      </div>
+    </div>
+  </div>
+</li>
+
+<!-- Product 4 -->
+<li class="scrollbar-item">
+  <div class="shop-card">
+    <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+      <img src="images/facemask.png" width="540" height="720" alt="Glow Face Mask" class="img-cover">
+      <div class="card-actions">
+        <button class="action-btn" onclick="addToCart({ id: 'facemask', name: 'Glow Face Mask', price: 850, image: 'images/facemask.png' })">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </button>
+        <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+        <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="price"><span class="span">Rs.850</span></div>
+      <h3><a href="#" class="card-title">Glow Face Mask</a></h3>
+      <div class="card-rating">
+        <div class="rating-wrapper">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div>
+        <p class="rating-text">2290 reviews</p>
+      </div>
+    </div>
+  </div>
+</li>
+
+<!-- Product 5 -->
+<li class="scrollbar-item">
+  <div class="shop-card">
+    <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+      <img src="images/lipbalm.png" width="540" height="720" alt="Organic Lip Balm" class="img-cover">
+      <span class="badge">New</span>
+      <div class="card-actions">
+        <button class="action-btn" onclick="addToCart({ id: 'lipbalm', name: 'Organic Lip Balm', price: 350, image: 'images/lipbalm.png' })">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </button>
+        <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+        <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="price"><span class="span">Rs.350</span></div>
+      <h3><a href="#" class="card-title">Organic Lip Balm</a></h3>
+      <div class="card-rating">
+        <div class="rating-wrapper">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div>
+        <p class="rating-text">1850 reviews</p>
+      </div>
+    </div>
+  </div>
+</li>
+
+<!-- Product 6 -->
+<li class="scrollbar-item">
+  <div class="shop-card">
+    <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+      <img src="images/eyecream.png" width="540" height="720" alt="Revitalizing Eye Cream" class="img-cover">
+      <div class="card-actions">
+        <button class="action-btn" onclick="addToCart({ id: 'eyecream', name: 'Revitalizing Eye Cream', price: 700, image: 'images/eyecream.png' })">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </button>
+        <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+        <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="price">
+        <del class="del">Rs.900</del>
+        <span class="span">Rs.700</span>
+      </div>
+      <h3><a href="#" class="card-title">Revitalizing Eye Cream</a></h3>
+      <div class="card-rating">
+        <div class="rating-wrapper">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div>
+        <p class="rating-text">3120 reviews</p>
+      </div>
+    </div>
+  </div>
+</li>
+
+
+    </ul>
+
+  </div>
+</section>
+<section class="new-arrivals" id="arrival">
+  <h2 class="section-title">NEW ARRIVALS</h2>
+  <a href="#" class="see-all">See All</a>
+
+  <div class="arrivals-grid">
+
+    <!-- 🔹 Product Card 1 -->
+    <div class="arrival-card">
+      <div class="card-banner">
+        <img src="images/suness.png" alt="All-Around Safe Block Essence Sun SPF45+" class="img-cover">
+        <div class="card-actions">
+          <button class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+        </div>
+      </div>
+      <h3 class="product-name">All-Around Safe Block Essence Sun SPF45+</h3>
+      <div class="rating"><span>☆ ☆ ☆ ☆ ☆</span> <span>(0)</span></div>
+      <p class="product-description">All Around Safe Block Sun Milk SPF50+/PA+++</p>
+      <p class="price">₹2,500</p>
+      <button class="btn-add" onclick="addToCart({
+        id: 'glow-cream',
+        name: 'Glow Cream',
+        price: 2500,
+        image: 'images/suness.png'
+      })">Add To Bag</button>
+    </div>
+
+    <!-- 🔹 Product Card 2 -->
+    <div class="arrival-card">
+      <div class="card-banner">
+        <span class="discount-badge">-20%</span>
+        <img src="images/snailcream.png" alt="Super Aqua Snail Cream" class="img-cover">
+        <div class="card-actions">
+          <button class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+        </div>
+      </div>
+      <h3 class="product-name">Super Aqua Snail Cream</h3>
+      <div class="rating"><span>☆ ☆ ☆ ☆ ☆</span> <span>(0)</span></div>
+      <p class="product-description">Skin Reinforcement Gel Type Cream</p>
+      <p class="price">₹2,500</p>
+      <button class="btn-add" onclick="addToCart({
+        id: 'snail-cream',
+        name: 'Super Aqua Snail Cream',
+        price: 2500,
+        image: 'images/snailcream.png'
+      })">Add To Bag</button>
+    </div>
+
+    <!-- 🔹 Product Card 3 -->
+    <div class="arrival-card">
+      <div class="card-banner">
+        <img src="images/clarify.png" alt="Clarifying Emulsion" class="img-cover">
+        <div class="card-actions">
+          <button class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+        </div>
+      </div>
+      <h3 class="product-name">Clarifying Emulsion</h3>
+      <div class="rating"><span>☆ ☆ ☆ ☆ ☆</span> <span>(0)</span></div>
+      <p class="product-description">with Bija Seed Oil</p>
+      <p class="price">₹2,500</p>
+      <button class="btn-add" onclick="addToCart({
+        id: 'clarifying-emulsion',
+        name: 'Clarifying Emulsion',
+        price: 2500,
+        image: 'images/clarify.png'
+      })">Add To Bag</button>
+    </div>
+
+    <!-- 🔹 Product Card 4 -->
+    <div class="arrival-card">
+      <div class="card-banner">
+        <img src="images/dewy.png" alt="Dewy Glow Jelly Cream" class="img-cover">
+        <div class="card-actions">
+          <button class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+        </div>
+      </div>
+      <h3 class="product-name">Dewy Glow Jelly Cream</h3>
+      <div class="rating"><span>☆ ☆ ☆ ☆ ☆</span> <span>(0)</span></div>
+      <p class="product-description">With Jeju Cherry Blossom</p>
+      <p class="price">₹2,500</p>
+      <button class="btn-add" onclick="addToCart({
+        id: 'dewy-jelly',
+        name: 'Dewy Glow Jelly Cream',
+        price: 2500,
+        image: 'images/dewy.png'
+      })">Add To Bag</button>
+    </div>
+
+    <!-- 🔹 Product Card 5 -->
+    <div class="arrival-card">
+      <div class="card-banner">
+        <img src="images/toner.png" alt="Refreshing Toner" class="img-cover">
+        <div class="card-actions">
+          <button class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+          <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+        </div>
+      </div>
+      <h3 class="product-name">Refreshing Toner</h3>
+      <div class="rating"><span>☆ ☆ ☆ ☆ ☆</span> <span>(0)</span></div>
+      <p class="product-description">Hydrating & Balancing Toner</p>
+      <p class="price">₹2,000</p>
+      <button class="btn-add" onclick="addToCart({
+        id: 'refresh-toner',
+        name: 'Refreshing Toner',
+        price: 2000,
+        image: 'images/toner.png'
+      })">Add To Bag</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ✅ FEATURED KITS SECTION -->
+<section class="featured-kits">
+
+  <!-- Blossom Glow Kit Card -->
+  <div class="kit-card">
+    <div class="kit-text">
+      <h2>Blossom Glow Kit</h2>
+      <p>Reveal your skin’s natural glow with our Lotus Glow Kit. Nourishing body and face creams with lotus extract provide deep hydration and rejuvenation. Suitable for all skin types. Vegan, cruelty-free, eco-friendly.</p>
+      <div class="kit-tags">
+        <span># GreatGift</span>
+        <span># AntiAging</span>
+        <span># Ingredients</span>
+        <span># EcoFriendly</span>
+      </div>
+      <div class="kit-actions">
+        <button class="shop-btn">Shop Now</button>
+        <a href="#" class="explore-link">Explore More →</a>
+      </div>
+    </div>
+    <div class="kit-image">
+      <img src="images/kit.png" alt="Blossom Glow Kit">
+    </div>
+  </div>
+
+  <!-- Floral Essence Masks Set Card -->
+  <div class="kit-card">
+    <div class="kit-image">
+      <img src="images/maskset.png" alt="Floral Essence Masks Sets">
+    </div>
+    <div class="kit-text">
+      <h2>Floral Essence Masks Sets</h2>
+      <p>Indulge in the beauty of nature with our Floral Essence Masks set. Each mask features a unique blend of flower extracts to hydrate and nourish your skin. Experience the essence of flowers in your skincare routine.</p>
+      <div class="kit-tags">
+        <span># GreatGift</span>
+        <span># AntiAging</span>
+        <span># Ingredients</span>
+      </div>
+      <div class="kit-actions">
+        <button class="shop-btn">Shop Now</button>
+        <a href="#" class="explore-link">Explore More →</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- === BLOG SECTION === -->
+<section class="blog-section" id="blog">
+  <div class="blog-header">
+    <h2>On The Blog</h2>
+    <a href="#" class="see-all">See All</a>
+  </div>
+
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-banner">
+        <img src="images/blog1.png" alt="Coconut Blog">
+      </div>
+      <div class="blog-content">
+        <h3>Cracking the Code</h3>
+        <p>Reveal your skin’s natural glow with our Lotus Glow Kit. Nourishing body and face creams.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-banner">
+        <img src="images/blog2.png" alt="Bloom Beauty Best">
+      </div>
+      <div class="blog-content">
+        <h3>Bloom Beauty Best of 2023</h3>
+        <p>Bloom Beauty Best of 2023 products winners are here.</p>
+        <a href="#" class="read-more black-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-banner">
+        <img src="images/blog3.png" alt="Skincare Habits">
+      </div>
+      <div class="blog-content">
+        <h3>7 Skincare Habits to Break Now</h3>
+        <p>Great skincare is a long game—little steps made nightly keep your skin at its best.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 📌 Skin Quiz Section -->
+<section class="skin-quiz-section">
+  <div class="quiz-container">
+    <img src="images/q1.png" alt="Skin Quiz" class="quiz-image">
+
+    <div class="quiz-content">
+      <h2>The Skin Quiz</h2>
+      <p>Meet the quiz that will curate a routine just as unique as you are.</p>
+      <a href="skin-quiz-api/templates/index.html" class="quiz-btn">Explore More</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+
+    <!-- Footer Top -->
+    <div class="footer-top">
+
+      <!-- Company Info -->
+      <ul class="footer-list">
+        <li>
+          <div class="logo"><span class="pink">Glam</span> Groove</div>
+          
+        </li>
+        <li>
+          <p class="footer-list-text">
+            Find a location nearest you. See <a href="#" class="link">Our Stores</a>
+          </p>
+        </li>
+        <li>
+          <p class="footer-list-text bold">+91 90163 5572</p>
+        </li>
+        <li>
+          <p class="footer-list-text">glamgroove@gmail.com</p>
+        </li>
+      </ul>
+
+      <!-- Useful Links -->
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Useful Links</p>
+        </li>
+        <li><a href="#" class="footer-link">New Products</a></li>
+        <li><a href="#" class="footer-link">Bestsellers</a></li>
+        <li><a href="#" class="footer-link">Bundles & Offers</a></li>
+        <li><a href="#" class="footer-link">Gift Cards</a></li>
+      </ul>
+
+      <!-- Info Links -->
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Information</p>
+        </li>
+        <li><a href="#" class="footer-link">Start a Return</a></li>
+        <li><a href="#" class="footer-link">Contact Us</a></li>
+        <li><a href="#" class="footer-link">Shipping FAQ</a></li>
+        <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+      </ul>
+
+      <!-- Newsletter -->
+      <div class="footer-list newsletter">
+        <p class="footer-list-title">Good emails.</p>
+        <p class="footer-list-text">
+          Enter your email below to be the first to know about new launches & exclusive deals.
+        </p>
+        <form action="#" class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required class="email-field">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; 2025 Glam Groove. All rights reserved.
+      </p>
+      <ul class="social-list">
+        <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-youtube"></ion-icon></a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+<!-- Swirl overlay for page transition -->
+<div id="swirl-overlay"></div>
+
+  
+  <!-- ✅ Auth Modal HTML -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+
+    <!-- 🔐 LOGIN FORM -->
+    <div id="loginForm">
+      <h2>Log In</h2>
+      <p>Please enter your e-mail and password:</p>
+      <form onsubmit="return validateLogin(event)">
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit" class="login-btn">Log In</button>
+      </form>
+
+      <div class="or-divider"><span>OR</span></div>
+
+      <button class="google-btn">
+        <img src="https://img.icons8.com/color/16/google-logo.png" alt="Google icon" />
+        Continue With Google
+      </button>
+
+      <div class="extra-links">
+  <a href="#" onclick="showResetForm()">Forgot password?</a><br>
+  <a href="#" onclick="showRegisterForm()">New to Glam Groove? <strong>Create an Account</strong></a>
+</div>
+
+    </div>
+
+    <!-- 🆕 REGISTER FORM -->
+    <div id="registerForm" style="display: none;">
+      <h2>Create Account</h2>
+      <form onsubmit="return validateRegister(event)">
+        <input type="text" id="registerName" placeholder="Full Name" required>
+        <input type="email" id="registerEmail" placeholder="Email" required>
+        <input type="password" id="registerPassword" placeholder="Password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <button type="submit" class="login-btn">Register</button>
+      </form>
+      <div class="extra-links">
+        <a href="#" onclick="showLoginForm()">Already have an account? <h5>Log In</h5></a>
+      </div>
+    </div>
+
+    <!-- 🔁 RESET FORM -->
+    <div id="resetForm" style="display: none;">
+      <h2>Password Recovery</h2>
+      <p>We'll send a reset link to your email:</p>
+      <form onsubmit="return sendReset(event)">
+        <input type="email" id="resetEmail" placeholder="Your Email" required>
+        <button type="submit" class="login-btn">Send Reset Link</button>
+      </form>
+      <div class="extra-links">
+        <a href="#" onclick="showLoginForm()"><strong>Back to Login</strong></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="cartContainer" class="cart-container hidden">
+  <span id="closeCartBtn" class="cart-close">&times;</span>
+  <h3>Your Cart</h3>
+  <div id="cartItems"></div>
+  <div class="cart-footer">
+    Subtotal: <span id="cartSubtotal">₹0.00</span>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</div>
+
+
+
+
+<script>
+function openModal() {
+  document.getElementById("authModal").style.display = "flex";
+  showLoginForm();
+}
+
+function closeModal() {
+  document.getElementById("authModal").style.display = "none";
+}
+
+function showLoginForm() {
+  document.getElementById("loginForm").style.display = "block";
+  document.getElementById("registerForm").style.display = "none";
+  document.getElementById("resetForm").style.display = "none";
+}
+
+function showRegisterForm() {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("registerForm").style.display = "block";
+  document.getElementById("resetForm").style.display = "none";
+}
+
+function showResetForm() {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("registerForm").style.display = "none";
+  document.getElementById("resetForm").style.display = "block";
+}
+
+function validateLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+  if (email && password) {
+    alert("✅ Login successful (demo only)");
+    closeModal();
+  }
+  return false;
+}
+
+function validateRegister(e) {
+  e.preventDefault();
+  const pass = document.getElementById("registerPassword").value;
+  const confirm = document.getElementById("confirmPassword").value;
+  if (pass !== confirm) {
+    alert("❌ Passwords do not match");
+    return false;
+  }
+  alert("✅ Registered successfully (demo only)");
+  showLoginForm();
+  return false;
+}
+
+function sendReset(e) {
+  e.preventDefault();
+  const email = document.getElementById("resetEmail").value;
+  if (email) {
+    alert("📨 Reset link sent to " + email);
+    showLoginForm();
+  }
+  return false;
+}
+function handleAccountClick() {
+  const email = localStorage.getItem("loggedInUser");
+  if (email) {
+    // Future: Show dropdown or logout button
+    alert(`👋 Logged in as ${email}`);
+  } else {
+    openModal(); // Open login modal
+  }
+}
+
+</script>
+<script src="script1.js"></script>
+</body>
+</html>

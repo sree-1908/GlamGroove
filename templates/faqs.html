@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs | Glam Groove</title>
+  <link rel="stylesheet" href="about.css">
+  <style>
+    .accordion {
+  background-color: #f1f1f1;
+  border: none;
+  outline: none;
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  font-size: medium;
+  font-family: 'Poppins', sans-serif;
+}
+.accordion.active,
+.accordion:hover {
+  background-color: #ddd;
+}
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f9f9f9;
+  padding: 0 1rem;
+}
+
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo"><span class="pink">Glam</span> Groove</a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop All</a>
+      <a href="#">Bestsellers</a>
+      <a href="#">Collection</a>
+      <a href="about.html">About Us</a>
+      <a href="#">Blog</a>
+    </nav>
+    <div class="nav-icons">
+      <span>SEARCH</span>
+      <span>ACCOUNT</span>
+      <span>CART</span>
+    </div>
+  </header>
+
+  <main class="about-container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="shipping.html">Shipping & Returns</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="faqs.html" class="active">FAQs</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <h1>Frequently Asked Questions</h1>
+
+      <button class="accordion">Do you test on animals?</button>
+      <div class="panel">
+        <p>No, all our products are 100% cruelty-free and not tested on animals.</p>
+      </div>
+
+      <button class="accordion">Are your products vegan?</button>
+      <div class="panel">
+        <p>Yes, most of our products are vegan. Please refer to each product page for specifics.</p>
+      </div>
+
+      <button class="accordion">What payment methods do you accept?</button>
+      <div class="panel">
+        <p>We accept all major credit/debit cards, UPI, Net Banking, and Wallets.</p>
+      </div>
+
+      <button class="accordion">How can I track my order?</button>
+      <div class="panel">
+        <p>After placing your order, you’ll receive a confirmation email with a tracking link.</p>
+      </div>
+
+    </section>
+  </main>
+  <script>
+  const acc = document.querySelectorAll(".accordion");
+  acc.forEach(btn => {
+    btn.addEventListener("click", function () {
+      this.classList.toggle("active");
+      const panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  });
+</script>
+</body>
+</html>

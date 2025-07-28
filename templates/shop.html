@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop All | Glam Groove</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='shop.css') }}" />
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ✅ Navbar -->
+  <header class="navbar">
+    <a href="{{ url_for('index') }}" class="logo"><span class="pink">Glam</span>Groove</a>
+
+    <nav class="nav-links">
+       <a href="{{ url_for('shop') }}">Shop All</a>
+    <a href="{{ url_for('index') }}#shop">Bestsellers</a>
+    <a href="{{ url_for('index') }}#arrival">Collection</a>
+    <a href="{{ url_for('about') }}">About Us</a>
+    <a href="{{ url_for('index') }}#blog">Blog</a>
+    </nav>
+
+    <div class="nav-icons">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-icon name="cart-outline" onclick="toggleCart()"></ion-icon>
+
+    </div>
+    <button id="clearFiltersBtn">Clear Filters</button>
+    <a href="javascript:history.back()" class="go-back-btn">← Go Back</a>
+  </header>
+
+  <main class="shop-container">
+    <!-- ✅ Sidebar -->
+    <aside class="sidebar">
+      <h2>Shop All</h2>
+      <ul class="category">
+        <li>Double-Cleanse</li>
+        <li>Cleansing Balms</li>
+        <li>Oil Cleansers</li>
+        <li>Water Cleansers</li>
+        <li>Exfoliators</li>
+        <li>Toners</li>
+        <li>Masks</li>
+        <li>Eye Care</li>
+        <li>Moisturizers</li>
+        <li>Sun Protection</li>
+        <li>Hair & Body</li>
+        <li>Makeup & Tools</li>
+      </ul>
+
+      <div class="filters">
+        <h3>Filters ●</h3>
+        <label><input type="checkbox"> Best Sellers</label>
+        <label><input type="checkbox"> New Arrivals</label>
+        <label><input type="checkbox"> On Sale</label>
+        <label><input type="checkbox"> Vegan</label>
+        <label><input type="checkbox"> For Oily Skin</label>
+        <label><input type="checkbox"> For Dry Skin</label>
+        <label><input type="checkbox"> SPF50+</label>
+        <label><input type="checkbox"> Fragrance Free</label>
+        <button id="applyFiltersBtn">Apply Filters</button>
+      </div>
+    </aside>
+
+    <!-- ✅ Products Section -->
+    <section class="products">
+      <div class="shop-header">
+        <p>13 PRODUCTS</p>
+        <label for="sort">SORT BY 
+          <select id="sort">
+  <option value="relevance">Relevance</option>
+  <option value="low-high">Price: Low to High</option>
+  <option value="high-low">Price: High to Low</option>
+</select>
+
+        </label>
+      </div>
+
+      <!-- No Products Message -->
+      <div id="noProducts" style="display:none; padding: 2rem; font-size: 1.2rem;">No products found.</div>
+
+      <div class="product-grid" id="productGrid">
+       
+  <div class="product-card" data-category="double-cleanse spf50 best-sellers">
+    <img src="{{ url_for('static', filename='images/seedoil.png') }}" alt="Seed Oil">
+    <h3>COCO & EYE</h3>
+    <p>Seed Oil SPF50+/PA+++</p>
+    <p>₹2656</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="toners spf50 new-arrivals">
+    <img src="{{ url_for('static', filename='images/buttersmooth.png') }}" alt="Butter Smooth">
+    <h3>Butter Smooth</h3>
+    <p>Butter Smooth Cream SPF50+/PA+++</p>
+    <p>₹2656</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="double-cleanse on-sale for-oily-skin">
+    <img src="{{ url_for('static', filename='images/facial.png') }}" alt="Facial Cleanser">
+    <h3>Micellar</h3>
+    <p>Facial Cleanser SPF50+/PA+++</p>
+    <p>₹2656</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="sun-protection spf50 best-sellers fragrance-free">
+    <img src="{{ url_for('static', filename='images/suncream.png') }}" alt="Sun Cream">
+    <h3>P:rem</h3>
+    <p>Sun Cream SPF50+/PA+++</p>
+    <p>₹2656</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="double-cleanse vegan for-dry-skin">
+    <img src="{{ url_for('static', filename='images/pillow.png') }}" alt="Hydration Booster">
+    <h3>Hydration Booster</h3>
+    <p>Ultra Moisturizing Cream 50ml</p>
+    <p>₹3735</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="double-cleanse vegan">
+    <img src="{{ url_for('static', filename='images/serum1.png') }}" alt="Glow Serum">
+    <h3>Glow Serum</h3>
+    <p>Vitamin C Brightening Serum 30ml</p>
+    <p>₹2324</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="cleansing-balms vegan on-sale">
+    <img src="{{ url_for('static', filename='images/cleansebalm.png') }}" alt="Deep Clean Balm">
+    <h3>Deep Clean Balm</h3>
+    <p>Melts makeup & dirt effortlessly</p>
+    <p>₹2905</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="oil-cleansers new-arrivals for-oily-skin">
+    <img src="{{ url_for('static', filename='images/oilcleanse.png') }}" alt="Oil Cleanser">
+    <h3>Pure Oil Cleanser</h3>
+    <p>Removes stubborn impurities</p>
+    <p>₹2490</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="moisturizers vegan best-sellers">
+    <img src="{{ url_for('static', filename='images/hydraboost.png') }}" alt="Hydration Boost Cream">
+    <h3>Hydration Boost Cream</h3>
+    <p>Deep hydration for dry skin</p>
+    <p>₹3735</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="sun-protection spf50 fragrance-free">
+    <img src="{{ url_for('static', filename='images/sunsheild.png') }}" alt="Sun Shield">
+    <h3>SPF50+ Sun Shield</h3>
+    <p>Lightweight, non-greasy sunblock</p>
+    <p>₹2075</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="eye-care new-arrivals">
+    <img src="{{ url_for('static', filename='images/eyecream1.png') }}" alt="Eye Cream">
+    <h3>Brightening Eye Cream</h3>
+    <p>Reduces dark circles & puffiness</p>
+    <p>₹3154</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+
+  <div class="product-card" data-category="masks vegan on-sale">
+    <img src="{{ url_for('static', filename='images/mask1.png') }}" alt="Glow Face Mask">
+    <h3>Glow Face Mask</h3>
+    <p>Detox & brighten dull skin</p>
+    <p>₹1826</p>
+    <button class="btn-add">Add To Bag</button>
+  </div>
+</div>
+
+    </section>
+  </main>
+
+  <script>
+    const categoryLinks = document.querySelectorAll('.category li');
+    const filterCheckboxes = document.querySelectorAll('.filters input[type="checkbox"]');
+    const cards = document.querySelectorAll('.product-card');
+    const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+    const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+    const noProducts = document.getElementById('noProducts');
+    const sortSelect = document.getElementById('sort');
+    const productGrid = document.getElementById('productGrid');
+
+    let activeCategory = null;
+    let activeFilters = [];
+
+    categoryLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        activeCategory = link.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+        categoryLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        updateProductVisibility();
+      });
+    });
+
+    applyFiltersBtn.addEventListener('click', () => {
+      activeFilters = Array.from(filterCheckboxes)
+        .filter(box => box.checked)
+        .map(box => box.nextSibling.nodeValue.trim().toLowerCase().replace(/\s+/g, '-'));
+      updateProductVisibility();
+    });
+
+    clearFiltersBtn.addEventListener('click', () => {
+      activeCategory = null;
+      activeFilters = [];
+      filterCheckboxes.forEach(box => box.checked = false);
+      categoryLinks.forEach(l => l.classList.remove('active'));
+      updateProductVisibility();
+    });
+
+    sortSelect.addEventListener('change', () => {
+      sortProducts(sortSelect.value);
+    });
+
+    function updateProductVisibility() {
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const categories = card.dataset.category.split(' ');
+        const matchesCategory = activeCategory ? categories.includes(activeCategory) : true;
+        const matchesFilters = activeFilters.length > 0 ? activeFilters.every(f => categories.includes(f)) : true;
+
+        if (matchesCategory && matchesFilters) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      noProducts.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function sortProducts(option) {
+      const visibleCards = Array.from(cards).filter(card => card.style.display !== 'none');
+      let sorted = [];
+
+      if (option === 'low-high') {
+        sorted = visibleCards.sort((a, b) => getPrice(a) - getPrice(b));
+      } else if (option === 'high-low') {
+        sorted = visibleCards.sort((a, b) => getPrice(b) - getPrice(a));
+      } else {
+        sorted = visibleCards; // Relevance, do nothing
+      }
+
+      sorted.forEach(card => {
+        productGrid.appendChild(card);
+      });
+    }
+
+    function getPrice(card) {
+  const pTags = card.querySelectorAll('p');
+  if (pTags.length === 0) return 0;
+
+  const priceText = pTags[pTags.length - 1].innerText;
+  return parseFloat(priceText.replace(/[₹$,]/g, '').trim());
+}
+
+    function addToCart(product) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const index = cart.findIndex(item => item.id === product.id);
+  if (index !== -1) {
+    cart[index].quantity += 1;
+  } else {
+    product.quantity = 1;
+    cart.push(product);
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const cartItemsContainer = document.getElementById("cartItems");
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let subtotal = 0;
+
+  cartItemsContainer.innerHTML = "";
+  cart.forEach(item => {
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+    div.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" class="cart-thumb">
+      <div class="cart-info">
+        <p>${item.name}</p>
+        <p>₹${item.price} x ${item.quantity}</p>
+      </div>
+    `;
+    subtotal += item.price * item.quantity;
+    cartItemsContainer.appendChild(div);
+  });
+  document.getElementById("cartSubtotal").textContent = "₹" + subtotal.toFixed(2);
+}
+
+function toggleCart() {
+  const cart = document.getElementById("cartContainer");
+  cart.classList.toggle("hidden");
+  updateCartUI();
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".btn-add").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const productCard = btn.closest(".product-card");
+      const name = productCard.querySelector("h3").textContent.trim();
+      const priceText = productCard.querySelector("p:nth-of-type(2)").textContent.replace(/[₹Rs$]/g, "").trim();
+      const image = productCard.querySelector("img").getAttribute("src");
+
+      addToCart({
+        id: name.toLowerCase().replace(/\s+/g, "-"),
+        name,
+        price: parseFloat(priceText),
+        image
+      });
+    });
+  });
+});
+  </script>
+  
+<div id="cartContainer" class="cart-container hidden">
+  <span class="cart-close" onclick="toggleCart()">&times;</span>
+  <h3>Your Cart</h3>
+  <div id="cartItems"></div>
+  <div class="cart-footer">
+    Subtotal: <span id="cartSubtotal">₹0.00</span>
+    <button class="checkout-btn">Checkout</button>
+  </div>
+</div>
+<script src="cart.js"></script>
+</body>
+</html>

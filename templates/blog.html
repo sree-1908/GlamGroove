@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog | Glam Groove</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='blog.css') }}" />
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="{{ url_for('index') }}" class="logo"><span class="pink">Glam</span> Groove</a>
+    <nav class="nav-links">
+      <a href="{{ url_for('shop') }}">Shop All</a>
+      <a href="{{ url_for('index') }}#shop">Bestsellers</a>
+      <a href="{{ url_for('index') }}#arrival">Collection</a>
+      <a href="{{ url_for('about') }}">About Us</a>
+      <a href="{{ url_for('blog') }}">Blog</a>
+    </nav>
+   
+<a href="javascript:history.back()" class="go-back-btn">← Go Back</a>
+  </header>
+  
+
+  <main class="blog-container">
+
+    <article class="blog-post">
+
+      <h2>Cracking the Code: Glow Naturally</h2>
+      <h2 class="blog-heading">
+    Cracking the Code<br />
+    <span class="sub-heading">
+      Reveal your skin’s natural glow with our Lotus Glow Kit.<br> 
+    </span>
+      <p class="blog-intro">Reveal your skin’s natural glow with our Lotus Glow Kit. Nourishing body and face creams make radiant skin achievable.</p>
+      <img src="{{ url_for('static', filename='images/b1.png') }}" alt="Lotus Glow Kit" class="blog-img"/>
+      <p>Our Lotus Glow Kit is designed to enhance your natural glow through deeply hydrating, botanical-based skincare. Each ingredient, from lotus extract to shea butter, is chosen to support your skin’s barrier and promote brightness from within.</p>
+      <p>Lotus flower is rich in antioxidants and gently soothes inflammation, making it ideal for sensitive and dull skin types. With regular use, the Glow Kit brings visible improvement in texture and tone.</p>
+      <img src="{{ url_for('static', filename='images/kit.png') }}" alt="Glowing Skin Creams" class="blog-img"/>
+      <p>Combine this with daily SPF and a good night’s sleep, and your glow-up is inevitable. Pro tip: pair it with our Brightening Serum for next-level results.</p>
+    </article>
+
+    <article class="blog-post">
+      <h2>7 Skincare Habits to Break Now</h2>
+      <p class="blog-intro">Great skincare is a long game—little steps made nightly keep your skin at its best.</p>
+      <img src="{{ url_for('static', filename='images/b31.png') }}" alt="Bad skincare habits" class="blog-img"/>
+      <ul>
+        <li><strong>1. Skipping sunscreen:</strong> Even indoors, UV damage happens. Use SPF daily.</li>
+        <li><strong>2. Over-exfoliating:</strong> It strips your skin barrier. Twice a week is plenty.</li>
+        <li><strong>3. Not removing makeup:</strong> Sleeping in makeup clogs pores and ages skin faster.</li>
+        <li><strong>4. Ignoring your neck:</strong> Your neck needs love too—apply serums and sunscreen!</li>
+        <li><strong>5. Touching your face constantly:</strong> This spreads bacteria and oils.</li>
+        <li><strong>6. Using dirty pillowcases:</strong> Wash them weekly to avoid breakouts.</li>
+        <li><strong>7. Not hydrating enough:</strong> Drink water and use a good moisturizer daily.</li>
+      </ul>
+      <img src="{{ url_for('static', filename='images/b4.png') }}" alt="Healthy skincare routine" class="blog-img"/>
+      <p>Small changes go a long way. Break these habits and your skin will thank you in just a few weeks.</p>
+    </article>
+
+  </main>
+<footer class="footer">
+  <div class="container">
+
+    <!-- Footer Top -->
+    <div class="footer-top">
+
+      <!-- Company Info -->
+      <ul class="footer-list">
+        <li>
+          <div class="logo"><span class="pink">Glam</span> Groove</div>
+          
+        </li>
+        <li>
+          <p class="footer-list-text">
+            Find a location nearest you. See <a href="#" class="link">Our Stores</a>
+          </p>
+        </li>
+        <li>
+          <p class="footer-list-text bold">+91 90163 5572</p>
+        </li>
+        <li>
+          <p class="footer-list-text">glamgroove@gmail.com</p>
+        </li>
+      </ul>
+
+      <!-- Useful Links -->
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Useful Links</p>
+        </li>
+        <li><a href="#" class="footer-link">New Products</a></li>
+        <li><a href="#" class="footer-link">Bestsellers</a></li>
+        <li><a href="#" class="footer-link">Bundles & Offers</a></li>
+        <li><a href="#" class="footer-link">Gift Cards</a></li>
+      </ul>
+
+      <!-- Info Links -->
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Information</p>
+        </li>
+        <li><a href="#" class="footer-link">Start a Return</a></li>
+        <li><a href="#" class="footer-link">Contact Us</a></li>
+        <li><a href="#" class="footer-link">Shipping FAQ</a></li>
+        <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+      </ul>
+
+      <!-- Newsletter -->
+      <div class="footer-list newsletter">
+        <p class="footer-list-title">Good emails.</p>
+        <p class="footer-list-text">
+          Enter your email below to be the first to know about new launches & exclusive deals.
+        </p>
+        <form action="#" class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required class="email-field">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; 2025 Glam Groove. All rights reserved.
+      </p>
+      <ul class="social-list">
+        <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-youtube"></ion-icon></a></li>
+      </ul>
+    </div>
+
+  </div>
+ 
+
+</footer>
+ 
+<script>
+  function goBackToBlog() {
+    window.location.href = "index.html#blog"; // Or replace with "blog-list.html" if that's your blog list page
+  }
+</script>
+
+</body>
+</html>

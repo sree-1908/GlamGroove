@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skin Quiz - Glam Groove</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .quiz-section {
+      max-width: 850px;
+      margin: 60px auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(233, 30, 99, 0.15);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-section img.decor {
+      position: absolute;
+      width: 100px;
+      opacity: 0.8;
+    }
+
+    .quiz-section img.decor.sparkle {
+      top: -20px;
+      left: -20px;
+    }
+
+    .quiz-section img.decor.heart {
+      top: -20px;
+      right: -20px;
+    }
+
+    .quiz-section h1 {
+      font-size: 2.8rem;
+      color: #e91e63;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-section p {
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-form {
+      text-align: left;
+    }
+
+    .quiz-question {
+      margin-bottom: 2rem;
+    }
+
+    .quiz-question h3 {
+      margin-bottom: 0.75rem;
+      color: #222;
+      font-weight: 500;
+    }
+
+    .quiz-question label {
+      display: inline-block;
+      background: #fce4ec;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      margin: 0.3rem 0.5rem 0.3rem 0;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .quiz-question input[type="radio"],
+    .quiz-question input[type="checkbox"] {
+      display: none;
+    }
+
+    .quiz-question label:hover,
+    .quiz-question input[type="radio"]:checked + label,
+    .quiz-question input[type="checkbox"]:checked + label {
+      background: #e91e63;
+      color: #fff;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      transition: border 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #e91e63;
+      outline: none;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #e91e63, #ec407a);
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(233, 30, 99, 0.3);
+    }
+
+    #routineOutput {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .routine-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .routine-card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1rem;
+      max-width: 250px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      background: #fff;
+    }
+
+    .routine-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+
+    .routine-card h4 {
+      margin: 0.5rem 0;
+      color: #333;
+    }
+
+    .routine-card p {
+      font-size: 0.9rem;
+      margin: 0.3rem 0;
+      color: #555;
+    }
+
+    .routine-btn {
+      background-color: #ff7eb9;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-top: 0.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .routine-btn:hover {
+      background-color: #e066a0;
+    }
+
+    #cartContainer {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      width: 300px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 9999;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .cart-item-qty button {
+      margin: 0 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+    .guide-card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.guide-card h3 {
+  margin-top: 0;
+}
+
+.guide-card .step-tip {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.product-block {
+  display: flex;
+  gap: 15px;
+}
+
+.product-block img {
+  width: 120px;
+  border-radius: 8px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.routine-btn {
+  background: #c8409d;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.routine-btn:hover {
+  background: #0056b3;
+}
+.go-back-btn {
+  position: absolute;
+  top: 30px;   /* adjust as needed */
+  right: 80px; /* adjust as needed to sit nicely next to the heart */
+  background: transparent;
+  color: #e91e63;
+  border: 2px solid #e91e63;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  z-index: 2; /* makes sure it’s above the image */
+}
+
+.go-back-btn:hover {
+  background: #e91e63;
+  color: #fff;
+}
+
+
+
+  </style>
+</head>
+<body>
+  
+  <section class="quiz-section">
+    <button onclick="history.back()" class="go-back-btn">← Go Back</button>
+
+    <img src="{{ url_for('static', filename='images/ani1.png') }}" class="decor sparkle">
+    <img src="{{ url_for('static', filename='images/ani2.png') }}" class="decor heart">
+    <button onclick="history.back()" class="go-back-btn">← Go Back</button>
+
+
+    <h1>✨ Your Personal Skin Quiz ✨</h1>
+    <p>Let's get to know your skin better — answer honestly for spot-on picks!</p>
+    <form class="quiz-form" id="skinQuizForm">
+      <div class="quiz-question">
+        <h3>1. What's your current skin type?</h3>
+        <input type="radio" id="dry" name="skinType" value="Dry" required><label for="dry">Dry</label>
+        <input type="radio" id="oily" name="skinType" value="Oily"><label for="oily">Oily</label>
+        <input type="radio" id="combo" name="skinType" value="Combination"><label for="combo">Combination</label>
+        <input type="radio" id="sensitive" name="skinType" value="Sensitive"><label for="sensitive">Sensitive</label>
+        <input type="radio" id="normal" name="skinType" value="Normal"><label for="normal">Normal</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>2. What are your main skin goals?</h3>
+        <input type="checkbox" id="acne" name="concerns" value="Acne"><label for="acne">Clear Acne</label>
+        <input type="checkbox" id="brightening" name="concerns" value="Brightening"><label for="brightening">Brightening</label>
+        <input type="checkbox" id="antiaging" name="concerns" value="Anti-Aging"><label for="antiaging">Anti-Aging</label>
+        <input type="checkbox" id="hydration" name="concerns" value="Hydration"><label for="hydration">Hydration</label>
+        <input type="checkbox" id="pores" name="concerns" value="Pore Care"><label for="pores">Minimize Pores</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>3. How sensitive is your skin?</h3>
+        <input type="radio" id="low" name="sensitivity" value="Low" required><label for="low">Low</label>
+        <input type="radio" id="medium" name="sensitivity" value="Medium"><label for="medium">Medium</label>
+        <input type="radio" id="high" name="sensitivity" value="High"><label for="high">High</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>4. Any known skin conditions?</h3>
+        <input type="text" name="conditions" placeholder="Eg: Eczema, Rosacea, None">
+      </div>
+
+      <div class="quiz-question">
+        <h3>5. How many hours do you spend outdoors daily?</h3>
+        <input type="radio" id="indoor" name="outdoors" value="Mostly Indoors" required><label for="indoor">Mostly Indoors</label>
+        <input type="radio" id="1-2h" name="outdoors" value="1–2 hours"><label for="1-2h">1–2 hrs</label>
+        <input type="radio" id="3-5h" name="outdoors" value="3–5 hours"><label for="3-5h">3–5 hrs</label>
+        <input type="radio" id="5hplus" name="outdoors" value="5+ hours"><label for="5hplus">5+ hrs</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>6. Do you wear makeup daily?</h3>
+        <input type="radio" id="makeup-yes" name="makeup" value="Yes" required><label for="makeup-yes">Yes</label>
+        <input type="radio" id="makeup-no" name="makeup" value="No"><label for="makeup-no">No</label>
+        <input type="radio" id="makeup-sometimes" name="makeup" value="Sometimes"><label for="makeup-sometimes">Sometimes</label>
+      </div>
+
+      <button type="submit" class="submit-btn">💖 Get My Routine</button>
+    </form>
+
+    <!-- 🧴 Output -->
+    <div id="routineOutput" class="routine-output" style="display:none;">
+      <h2>Your Personalized Routine 💖</h2>
+      <div id="routineCards" class="routine-grid"></div>
+    </div>
+    <button onclick="history.back()" class="go-back-btn">← Go Back</button>
+
+  </section>
+
+  <div id="cartContainer" class="hidden">
+    <button id="closeCartBtn">Close</button>
+    <div id="cartItems"></div>
+    <p>Subtotal: <span id="cartSubtotal">₹0</span></p>
+  </div>
+  
+
+ <script src="{{ url_for('static', filename='products.js') }}"></script>
+<script src="{{ url_for('static', filename='quiz.js') }}"></script>
+
+</body>
+</html>

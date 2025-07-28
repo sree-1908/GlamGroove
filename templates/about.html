@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Glam Groove</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  
+</head>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="{{ url_for('index') }}" class="logo"><span class="pink">Glam</span> Groove</a>
+<nav class="nav-links">
+  <a href="{{ url_for('shop') }}">Shop All</a>
+  <a href="{{ url_for('index') }}#shop">Bestsellers</a>
+  <a href="{{ url_for('index') }}#arrival">Collection</a>
+  <a href="{{ url_for('about') }}">About Us</a>
+  <a href="{{ url_for('index') }}#blog">Blog</a>
+</nav>
+    
+    <a href="javascript:history.back()" class="go-back-btn">← Go Back</a>
+  </header>
+
+  <main class="about-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#about">About Us</a></li>
+<li><a href="#shipping">Shipping & Returns</a></li>
+<li><a href="#contact">Contact Us</a></li>
+<li><a href="#faqs">FAQs</a></li>
+
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="content">
+      <h1>About Glam Groove</h1>
+      <p>Glam Groove is your one-stop destination for premium skincare and beauty products curated to elevate your self-care routine. Our mission is to deliver high-quality, sustainable, and cruelty-free products that empower you to look and feel your best every day.</p>
+
+      <h2>SHIPPING</h2>
+
+      <button class="accordion">Domestic Shipping</button>
+      <div class="panel">
+        <p>All orders are shipped from our main warehouse in Bengaluru. Orders placed before 10 pm IST/ will be processed and shipped by the next business day.</p>
+      </div>
+
+      <button class="accordion">International Shipping</button>
+      <div class="panel">
+        <p>We offer international shipping via trusted partners. Customs duties and taxes are calculated at checkout. Transit time varies between 4 to 12 business days. Please note we do not accept returns on international orders.</p>
+      </div>
+
+      <button class="accordion">Shipping Restriction</button>
+      <div class="panel">
+        <p>We currently do not ship to P.O. boxes, APO/FPO addresses, or certain remote areas.</p>
+      </div>
+
+      <h2>RETURNS</h2>
+
+      <button class="accordion">Return Policy</button>
+      <div class="panel">
+        <p>We accept returns within 30 days of purchase. Items must be unused and in original packaging.</p>
+      </div>
+
+      <button class="accordion">How To Return</button>
+      <div class="panel">
+        <p>Contact our support team to initiate a return. We will provide you with a return shipping label and instructions.</p>
+      </div>
+
+      <button class="accordion">Refunds</button>
+      <div class="panel">
+        <p>Refunds are processed within 5–7 business days after we receive your return. Original shipping fees are non-refundable.</p>
+      </div>
+      <div id="contact">
+    <h2>Contact Us</h2>
+    <p>Email us at <strong>glamgroove@gmail.com</strong> or call <strong>+91 90163 5572</strong></p>
+    <form>
+      <input type="text" placeholder="Your Name" required><br><br>
+      <input type="email" placeholder="Your Email" required><br><br>
+      <textarea placeholder="Your Message" rows="4" required></textarea><br><br>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <!-- FAQs Section -->
+  <div id="faqs">
+    <h2>Frequently Asked Questions</h2>
+    <button class="accordion">Do you test on animals?</button>
+    <div class="panel"><p>No, all our products are 100% cruelty-free...</p></div>
+    <!-- more accordion buttons -->
+     <button class="accordion">Are your products vegan?</button>
+      <div class="panel">
+        <p>Yes, most of our products are vegan. Please refer to each product page for specifics.</p>
+      </div>
+
+      <button class="accordion">What payment methods do you accept?</button>
+      <div class="panel">
+        <p>We accept all major credit/debit cards, UPI, Net Banking, and Wallets.</p>
+      </div>
+
+      <button class="accordion">How can I track my order?</button>
+      <div class="panel">
+        <p>After placing your order, you’ll receive a confirmation email with a tracking link.</p>
+      </div>
+
+  </div>
+    </section>
+  </main>
+<footer class="footer">
+  <div class="container">
+
+    <!-- Footer Top -->
+    <div class="footer-top">
+
+      <!-- Company Info -->
+      <ul class="footer-list">
+        <li>
+          <div class="logo"><span class="pink">Glam</span> Groove</div>
+          
+        </li>
+        <li>
+          <p class="footer-list-text">
+            Find a location nearest you. See <a href="#" class="link">Our Stores</a>
+          </p>
+        </li>
+        <li>
+          <p class="footer-list-text bold">+91 90163 5572</p>
+        </li>
+        <li>
+          <p class="footer-list-text">glamgroove@gmail.com</p>
+        </li>
+      </ul>
+
+      <!-- Useful Links -->
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Useful Links</p>
+        </li>
+        <li><a href="#" class="footer-link">New Products</a></li>
+        <li><a href="#" class="footer-link">Bestsellers</a></li>
+        <li><a href="#" class="footer-link">Bundles & Offers</a></li>
+        <li><a href="#" class="footer-link">Gift Cards</a></li>
+      </ul>
+
+      <!-- Info Links -->
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Information</p>
+        </li>
+        <li><a href="#" class="footer-link">Start a Return</a></li>
+        <li><a href="#" class="footer-link">Contact Us</a></li>
+        <li><a href="#" class="footer-link">Shipping FAQ</a></li>
+        <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+      </ul>
+
+      <!-- Newsletter -->
+      <div class="footer-list newsletter">
+        <p class="footer-list-title">Good emails.</p>
+        <p class="footer-list-text">
+          Enter your email below to be the first to know about new launches & exclusive deals.
+        </p>
+        <form action="#" class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required class="email-field">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; 2025 Glam Groove. All rights reserved.
+      </p>
+      <ul class="social-list">
+        <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-youtube"></ion-icon></a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+  <script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

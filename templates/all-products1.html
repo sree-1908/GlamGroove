@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Products - Glam Groove</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <!-- ✅ Navbar -->
+  <header class="navbar">
+    <a href="{{ url_for('static', filename='styles.css') }}" class="logo"><span class="pink">Glam</span> Groove</a>
+
+
+    <nav class="nav-links">
+      <a href="{{ url_for('shop') }}">Shop All</a>
+      <a href="{{ url_for('index') }}#shop">Bestsellers</a>
+      <a href="{{ url_for('index') }}#arrival">Collection</a>
+      <a href="{{ url_for('about') }}">About Us</a>
+      <a href="{{ url_for('blog') }}">Blog</a>
+    </nav>
+    <div class="nav-icons">
+  <div class="icon-block">
+    <ion-icon name="search-outline"></ion-icon>
+  </div>
+  <div class="icon-block">
+    <ion-icon name="person-outline"></ion-icon>
+  </div>
+  <div class="icon-block">
+    <ion-icon name="cart-outline"></ion-icon>
+  </div>
+</div>
+
+
+<!--<button class="go-back-btn" onclick="history.back()">← Go Back</button>-->
+<!--<button id="goBackBtn" class="go-back-btn">← Go Back</button>-->
+
+
+<a href="javascript:history.back()" class="go-back-btn">← Go Back</a>
+
+  
+  </header>
+
+  
+
+  <!-- ✅ Main Shop Page -->
+  <main class="shop-page">
+
+    <!-- 📌 Sidebar -->
+    <aside class="shop-sidebar">
+      <div class="shop-intro">
+        <h3>Bestsellers & Kits</h3>
+        <p id="para">Explore our most loved beauty picks curated for you.</p>
+      </div>
+
+      <div class="shop-filters">
+        <h3>Filters</h3>
+
+        <div class="filter-group">
+          <h4>Product Type</h4>
+          <label><input type="checkbox" name="product-type" value="cream"> Creams</label><br>
+          <label><input type="checkbox" name="product-type" value="serum"> Serums</label><br>
+          <label><input type="checkbox" name="product-type" value="cleanser">Cleansers</label><br>
+          <label><input type="checkbox" name="product-type" value="Masks">Masks</label><br>
+          <label><input type="checkbox" name="product-type" value="lip">Lip Products</label><br>
+        </div>
+
+        <div class="filter-group">
+          <h4>Ingredient</h4>
+          <label><input type="checkbox" name="ingredient" value="vitamin-c"> Vitamin C</label><br>
+          <label><input type="checkbox" name="ingredient" value="hyaluronic"> Hyaluronic Acid</label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Skin Type</h4>
+          <label><input type="checkbox" name="skin-type" value="dry"> Dry</label><br>
+          <label><input type="checkbox" name="skin-type" value="oily"> Oily</label><br>
+          <label><input type="checkbox" name="skin-type" value="normal"> Normal</label><br>
+          <label><input type="checkbox" name="skin-type" value="sensitive"> Sensitive</label><br>
+          <label><input type="checkbox" name="skin-type" value="all"> All</label><br>
+          
+        </div>
+
+        <div class="filter-group">
+          <h4>Price Range</h4>
+          <input type="range" min="100" max="2000" step="50" id="priceRange">
+          <p>Max: <span id="priceValue">1000</span> Rs.</p>
+        </div>
+
+        <button class="apply-btn">Apply</button>
+      </div>
+    </aside>
+
+    <!-- 📌 Products Grid -->
+    <section class="shop-products">
+      <div class="products-grid">
+
+        <!-- 🔥 Repeat for each product -->
+        <div class="shop-card" data-type="cream"
+      data-ingredient="hyaluronic"
+      data-skin="dry"
+      data-price="850">
+          <div class="card-banner">
+            <img src="{{ url_for('static', filename='images/glow.png') }}" alt="HydraGlow Cream" class="img-cover">
+            <div class="card-actions">
+              <button class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon></button>
+              <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+              <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+            </div>
+          </div>
+          
+          <div class="card-content">
+            <div class="price">Rs.850.00</div>
+            <h3>HydraGlow Cream</h3>
+            <div class="card-rating">
+              <div class="rating-wrapper">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </div>
+              <p class="rating-text">6270 reviews</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 👇 Add more products below -->
+        <!-- Example product, repeat -->
+        <div class="shop-card" data-type="serum"
+      data-ingredient="vitamin-c"
+      data-skin="all"
+      data-price="1200">
+          <div class="card-banner">
+            <img src="{{ url_for('static', filename='images/vitamin-c-serum.png') }}" alt="Vitamin C Serum" class="img-cover">
+            <div class="card-actions">
+              <button class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon></button>
+              <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+              <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="price">Rs.1200.00</div>
+            <h3>Vitamin C Serum</h3>
+            <div class="card-rating">
+              <div class="rating-wrapper">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </div>
+              <p class="rating-text">6270 reviews</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keep adding cards... -->
+         <div class="shop-card" data-type="cleanser"
+      data-ingredient="hyaluronic"
+      data-skin="oily"
+      data-price="960">
+          <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+            <img src="{{ url_for('static', filename='images/cleanser.png') }}" width="540" height="720" alt="Gentle Facial Cleanser" class="img-cover">
+            <span class="badge" aria-label="20% off">-20%</span>
+            <div class="card-actions">
+              <button class="action-btn" aria-label="add to cart">
+                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+              </button>
+              <button class="action-btn" aria-label="add to wishlist">
+                <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+              </button>
+              <button class="action-btn" aria-label="compare">
+                <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+              </button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="price">
+              <del class="del">Rs.1200</del>
+              <span class="span">Rs.960</span>
+            </div>
+            <h3><a href="#" class="card-title">Gentle Facial Cleanser</a></h3>
+            <div class="card-rating">
+              <div class="rating-wrapper" aria-label="5 star rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </div>
+              <p class="rating-text">4100 reviews</p>
+            </div>
+          </div>
+        </div>
+        <div class="shop-card" data-type="serum"
+      data-ingredient="hyaluronic"
+      data-skin="normal"
+      data-price="1450">
+          <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+            <img src="{{ url_for('static', filename='images/serum.png') }}" width="540" height="720" alt="Rejuvenating Face Serum" class="img-cover">
+            <div class="card-actions">
+              
+              <button class="action-btn" aria-label="add to cart">
+                <ion-icon name="bag-handle-outline"></ion-icon>
+              </button>
+              <button class="action-btn" aria-label="add to wishlist">
+                <ion-icon name="star-outline"></ion-icon>
+              </button>
+              <button class="action-btn" aria-label="compare">
+                <ion-icon name="repeat-outline"></ion-icon>
+              </button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="price">
+              <span class="span">Rs.1450</span>
+            </div>
+            <h3><a href="#" class="card-title">Rejuvenating Face Serum</a></h3>
+            <div class="card-rating">
+              <div class="rating-wrapper">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </div>
+              <p class="rating-text">3580 reviews</p>
+            </div>
+          </div>
+        </div>
+        <div class="shop-card" data-type="cream"
+      data-ingredient="hyaluronic"
+      data-skin="sensitive"
+      data-price="1100">
+          <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+            <img src="{{ url_for('static', filename='images/moisturizer.png') }}" width="540" height="720" alt="Hydrating Moisturizer" class="img-cover">
+            <span class="badge">Best Seller</span>
+            <div class="card-actions">
+              <button class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon></button>
+              <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+              <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="price"><span class="span">Rs.1100</span></div>
+            <h3><a href="#" class="card-title">Hydrating Moisturizer</a></h3>
+            <div class="card-rating">
+              <div class="rating-wrapper">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </div>
+              <p class="rating-text">6270 reviews</p>
+            </div>
+          </div>
+        </div>
+        <div class="shop-card" data-type="mask"
+  data-ingredient="vitamin-c"
+  data-skin="normal"
+  data-price="850">
+          <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+            <img src="{{ url_for('static', filename='images/facemask.png') }}" width="540" height="720" alt="Glow Face Mask" class="img-cover">
+            <div class="card-actions">
+              <button class="action-btn"><ion-icon name="bag-handle-outline"></ion-icon></button>
+              <button class="action-btn"><ion-icon name="star-outline"></ion-icon></button>
+              <button class="action-btn"><ion-icon name="repeat-outline"></ion-icon></button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="price"><span class="span">Rs.850</span></div>
+            <h3><a href="#" class="card-title">Glow Face Mask</a></h3>
+            <div class="card-rating">
+              <div class="rating-wrapper">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </div>
+              <p class="rating-text">2290 reviews</p>
+            </div>
+          </div>
+          
+
+      </div>
+      <div class="shop-card" data-type="cleanser"
+  data-ingredient="hyaluronic"
+  data-skin="oily"
+  data-price="550">
+    <div class="card-banner img-holder">
+      <img src="{{ url_for('static', filename='images/foam.png') }}" alt="Gentle Foaming Cleanser" class="img-cover">
+      <div class="card-actions">
+        <button class="action-btn" aria-label="add to cart">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="add to wishlist">
+          <ion-icon name="star-outline"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="compare">
+          <ion-icon name="repeat-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="price">
+        <span class="span">Rs.550.00</span>
+      </div>
+      <h3><a href="#" class="card-title">Gentle Foaming Cleanser</a></h3>
+      <div class="card-rating">
+        <div class="rating-wrapper">
+          <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+        </div>
+        <p class="rating-text">1200 reviews</p>
+      </div>
+    </div>
+  </div>
+  <div class="shop-card" data-type="cleanser"
+  data-ingredient="vitamin-c"
+  data-skin="sensitive"
+  data-price="400">
+    <div class="card-banner img-holder">
+      <img src="{{ url_for('static', filename='images/rose.png') }}" alt="Rose Water Toner" class="img-cover">
+      <div class="card-actions">
+        <button class="action-btn" aria-label="add to cart">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="add to wishlist">
+          <ion-icon name="star-outline"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="compare">
+          <ion-icon name="repeat-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="price">
+        <span class="span">Rs.400.00</span>
+      </div>
+      <h3><a href="#" class="card-title">Rose Water Toner</a></h3>
+      <div class="card-rating">
+        <div class="rating-wrapper">
+          <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+        </div>
+        <p class="rating-text">890 reviews</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="shop-card" data-type="cleanser"
+  data-ingredient="vitamin-c"
+  data-skin="dry"
+  data-price="670">
+    <div class="card-banner img-holder">
+      <img src="{{ url_for('static', filename='images/scrub.png') }}" alt="Exfoliating Face Scrub" class="img-cover">
+      <div class="card-actions">
+        <button class="action-btn" aria-label="add to cart">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="add to wishlist">
+          <ion-icon name="star-outline"></ion-icon>
+        </button>
+        <button class="action-btn" aria-label="compare">
+          <ion-icon name="repeat-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="price">
+        <span class="span">Rs.670.00</span>
+      </div>
+      <h3><a href="#" class="card-title">Exfoliating Face Scrub</a></h3>
+      <div class="card-rating">
+        <div class="rating-wrapper">
+          <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+        </div>
+        <p class="rating-text">1340 reviews</p>
+      </div>
+    </div>
+  </div>
+  
+  <p id="no-results" style="display: none; text-align: center; margin-top: 2rem; font-weight: bold;">
+    No products found
+  </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+  <div class="container">
+
+    <!-- Footer Top -->
+    <div class="footer-top">
+
+      <!-- Company Info -->
+      <ul class="footer-list">
+        <li>
+          
+          <div class="logo"><span class="pink">Glam</span> Groove</div>
+        </li>
+        <li>
+          <p class="footer-list-text">
+            Find a location nearest you. See <a href="#" class="link">Our Stores</a>
+          </p>
+        </li>
+        <li>
+          <p class="footer-list-text bold">+91 90163 5572</p>
+        </li>
+        <li>
+          <p class="footer-list-text">glamgroove@gmail.com</p>
+        </li>
+      </ul>
+
+      <!-- Useful Links -->
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Useful Links</p>
+        </li>
+        <li><a href="#" class="footer-link">New Products</a></li>
+        <li><a href="#" class="footer-link">Bestsellers</a></li>
+        <li><a href="#" class="footer-link">Bundles & Offers</a></li>
+        <li><a href="#" class="footer-link">Gift Cards</a></li>
+      </ul>
+
+      <!-- Info Links -->
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Information</p>
+        </li>
+        <li><a href="#" class="footer-link">Start a Return</a></li>
+        <li><a href="#" class="footer-link">Contact Us</a></li>
+        <li><a href="#" class="footer-link">Shipping FAQ</a></li>
+        <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+      </ul>
+
+      <!-- Newsletter -->
+      <div class="footer-list newsletter">
+        <p class="footer-list-title">Good emails.</p>
+        <p class="footer-list-text">
+          Enter your email below to be the first to know about new launches & exclusive deals.
+        </p>
+        <form action="#" class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required class="email-field">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; 2025 Glam Groove. All rights reserved.
+      </p>
+      <ul class="social-list">
+        <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="#" class="social-link"><ion-icon name="logo-youtube"></ion-icon></a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+  <script src="{{ url_for('static', filename='shop.js') }}"></script>
+</body>
+</html>
