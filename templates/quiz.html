@@ -297,16 +297,69 @@
     <p>Let's get to know your skin better — answer honestly for spot-on picks!</p>
     <form class="quiz-form" id="skinQuizForm">
       <div class="quiz-question">
-        <h3>1. What's your current skin type?</h3>
-        <input type="radio" id="dry" name="skinType" value="Dry" required><label for="dry">Dry</label>
-        <input type="radio" id="oily" name="skinType" value="Oily"><label for="oily">Oily</label>
-        <input type="radio" id="combo" name="skinType" value="Combination"><label for="combo">Combination</label>
-        <input type="radio" id="sensitive" name="skinType" value="Sensitive"><label for="sensitive">Sensitive</label>
-        <input type="radio" id="normal" name="skinType" value="Normal"><label for="normal">Normal</label>
-      </div>
+  <h3>1. What are your current skin concerns?</h3>
+  
+  <input type="checkbox" id="acne" name="concerns" value="Acne">
+  <label for="acne">Acne</label>
+
+  <input type="checkbox" id="dryness" name="concerns" value="Dryness">
+  <label for="dryness">Dryness</label>
+
+  <input type="checkbox" id="oilySkin" name="concerns" value="Oily Skin">
+  <label for="oilySkin">Oily Skin</label>
+
+  <input type="checkbox" id="hydration" name="concerns" value="Hydration">
+  <label for="hydration">Hydration</label>
+
+  <input type="checkbox" id="darkSpots" name="concerns" value="Dark Spots">
+  <label for="darkSpots">Dark Spots</label>
+
+  <input type="checkbox" id="pigmentation" name="concerns" value="Pigmentation">
+  <label for="pigmentation">Pigmentation</label>
+
+  <input type="checkbox" id="uneven" name="concerns" value="Uneven Skin Tone">
+  <label for="uneven">Uneven Skin Tone</label>
+
+  <input type="checkbox" id="dullness" name="concerns" value="Dullness">
+  <label for="dullness">Dullness</label>
+
+  <input type="checkbox" id="redness" name="concerns" value="Redness">
+  <label for="redness">Redness</label>
+
+  <input type="checkbox" id="wrinkles" name="concerns" value="Wrinkles">
+  <label for="wrinkles">Wrinkles</label>
+
+  <input type="checkbox" id="fineLines" name="concerns" value="Fine Lines">
+  <label for="fineLines">Fine Lines</label>
+
+  <input type="checkbox" id="pores" name="concerns" value="Pores">
+  <label for="pores">Enlarged Pores</label>
+
+  <input type="checkbox" id="sunDamage" name="concerns" value="Sun Damage">
+  <label for="sunDamage">Sun Damage</label>
+
+  <input type="checkbox" id="sensitivity" name="concerns" value="Sensitivity">
+  <label for="sensitivity">Sensitivity</label>
+
+  <input type="checkbox" id="blackheads" name="concerns" value="Blackheads">
+  <label for="blackheads">Blackheads</label>
+
+  <input type="checkbox" id="whiteheads" name="concerns" value="Whiteheads">
+  <label for="whiteheads">Whiteheads</label>
+</div>
+<div class="quiz-question">
+  <h3>2. What's your current skin type?</h3>
+
+  <input type="radio" id="dry" name="skinType" value="Dry" required><label for="dry">Dry</label>
+  <input type="radio" id="oily" name="skinType" value="Oily"><label for="oily">Oily</label>
+  <input type="radio" id="combo" name="skinType" value="Combination"><label for="combo">Combination</label>
+  <input type="radio" id="sensitive" name="skinType" value="Sensitive"><label for="sensitive">Sensitive</label>
+  <input type="radio" id="normal" name="skinType" value="Normal"><label for="normal">Normal</label>
+</div>
+
 
       <div class="quiz-question">
-        <h3>2. What are your main skin goals?</h3>
+        <h3>3. What are your main skin goals?</h3>
         <input type="checkbox" id="acne" name="concerns" value="Acne"><label for="acne">Clear Acne</label>
         <input type="checkbox" id="brightening" name="concerns" value="Brightening"><label for="brightening">Brightening</label>
         <input type="checkbox" id="antiaging" name="concerns" value="Anti-Aging"><label for="antiaging">Anti-Aging</label>
@@ -315,16 +368,13 @@
       </div>
 
       <div class="quiz-question">
-        <h3>3. How sensitive is your skin?</h3>
+        <h3>4. How sensitive is your skin?</h3>
         <input type="radio" id="low" name="sensitivity" value="Low" required><label for="low">Low</label>
         <input type="radio" id="medium" name="sensitivity" value="Medium"><label for="medium">Medium</label>
         <input type="radio" id="high" name="sensitivity" value="High"><label for="high">High</label>
       </div>
 
-      <div class="quiz-question">
-        <h3>4. Any known skin conditions?</h3>
-        <input type="text" name="conditions" placeholder="Eg: Eczema, Rosacea, None">
-      </div>
+      
 
       <div class="quiz-question">
         <h3>5. How many hours do you spend outdoors daily?</h3>
