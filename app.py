@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify, render_template
 import joblib
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
 app = Flask(__name__)
 
-# Load the model
+# Load trained model
 model = joblib.load('skin_routine_model.pkl')
 print("🧠 Model expects features:", model.feature_names_in_)
 
@@ -17,7 +18,7 @@ encoders = {
     'makeup_use': LabelEncoder().fit(['Yes', 'No', 'Sometimes']),
 }
 
-# Mapping for numeric predictions → product names
+# Label to product name
 product_labels = {
     0: "Gentle Facial Cleanser",
     1: "Micellar Facial Cleanser",
@@ -25,10 +26,8 @@ product_labels = {
     3: "Hydrating Moisturizer",
     4: "Glow Serum (Vitamin C Brightening Serum)",
     5: "Deep Clean Balm"
-    # Add any other mappings your model outputs!
 }
 
-# ✅ ROUTES — your full site pages here!
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -65,14 +64,19 @@ def all_products():
 def ele():
     return render_template('ele.html')
 
-# ✅ Prediction route
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
         data = request.get_json()
         print("📥 Incoming Data:", data)
 
-        # Prepare features
+        # Load model and encoders
+        model = joblib.load('skin_routine_model.pkl')
+        encoders = joblib.load('input_encoders.pkl')
+        output_encoders = joblib.load('output_encoders.pkl')
+        mlb = joblib.load('concerns_mlb.pkl')
+
+        # Encode categorical fields
         input_row = {
             'skin_type': encoders['skin_type'].transform([data['skinType']])[0],
             'sensitivity': encoders['sensitivity'].transform([data['sensitivity']])[0],
@@ -80,29 +84,17 @@ def predict():
             'makeup_use': encoders['makeup_use'].transform([data['makeup']])[0],
         }
 
-        concern_features = [
-            'Acne, Hydration',
-            'Anti-Aging, Brightening',
-            'Dark Spots, Texture',
-            'Oil Control, Dullness',
-            'Redness, Pores',
-            'Sun Damage, Uneven Tone'
-        ]
-
-        for feat in concern_features:
-            input_row[feat] = 1 if feat in data.get('concerns', []) else 0
-
+        concern_vector = pd.DataFrame(mlb.transform([data.get('concerns', [])]), columns=mlb.classes_)
         df = pd.DataFrame([input_row])
+        input_features = pd.concat([df, concern_vector], axis=1)
 
         # Predict
-        prediction = model.predict(df)[0]
-        print("🔢 Raw model prediction:", prediction)
+        prediction = model.predict(input_features)[0]
 
-        cleanser = product_labels.get(int(prediction[0]), "Unknown Cleanser")
-        toner = product_labels.get(int(prediction[1]), "Unknown Toner")
-        moisturizer = product_labels.get(int(prediction[2]), "Unknown Moisturizer")
-
-        print("✨ Mapped prediction:", cleanser, toner, moisturizer)
+        # Decode predictions
+        cleanser = output_encoders['cleanser'].inverse_transform([prediction[0]])[0]
+        toner = output_encoders['toner'].inverse_transform([prediction[1]])[0]
+        moisturizer = output_encoders['moisturizer'].inverse_transform([prediction[2]])[0]
 
         return jsonify({
             'cleanser': cleanser,
@@ -114,6 +106,7 @@ def predict():
         print("❌ Error in /predict:", e)
         return jsonify({'error': str(e)}), 500
 
-# ✅ Run server
+
+# Server start
 if __name__ == '__main__':
     app.run(debug=True)
