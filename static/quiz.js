@@ -15,6 +15,8 @@ function addToCart(product) {
 function updateCartUI() {
   const cartItems = document.getElementById("cartItems");
   const subtotal = document.getElementById("cartSubtotal");
+  if (!cartItems || !subtotal) return;
+
   cartItems.innerHTML = '';
   let total = 0;
 
@@ -47,9 +49,13 @@ function changeQty(id, delta) {
 }
 
 function toggleCart() {
-  document.getElementById("cartContainer").classList.toggle("hidden");
+  const cartContainer = document.getElementById("cartContainer");
+  if (cartContainer) {
+    cartContainer.classList.toggle("hidden");
+  }
 }
 
+// ✅ QUIZ + CART INIT
 document.addEventListener('DOMContentLoaded', () => {
   const closeCartBtn = document.getElementById('closeCartBtn');
   if (closeCartBtn) {
@@ -65,18 +71,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ✅ QUIZ LOGIC — STEP-BY-STEP GUIDE
   const form = document.getElementById('skinQuizForm');
+  if (!form) return;
+
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const formData = new FormData(this);
-    const data = Object.fromEntries(formData.entries());
-    data.concerns = formData.getAll('concerns');
+    const skinType = formData.get('skinType');
+if (!skinType) {
+  alert("Please select your skin type.");
+  return;
+}
+
+const data = {
+  skinType,
+  concerns: formData.getAll('concerns'),
+  sensitivity: formData.get('sensitivity'),
+  conditions: formData.get('conditions'),
+  outdoors: formData.get('outdoors'),
+  makeup: formData.get('makeup'),
+};
+
+
+    // ✅ Sanitize concerns to match model-trained features
+    const validConcerns = [
+      "Acne", "Brightening", "Hydration", "Redness", "Pores",
+      "Dark Spots", "Anti-Aging", "Uneven Tone", "Oil Control",
+      "Dullness", "Texture", "Sun Damage"
+    ];
+    data.concerns = data.concerns.filter(c => validConcerns.includes(c));
 
     try {
-      const response = await fetch("/predict", {
-          method: "POST",
+      const response = await fetch('/predict', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
@@ -86,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const routineOutput = document.getElementById('routineOutput');
       const routineCards = document.getElementById('routineCards');
+      if (!routineOutput || !routineCards) return;
+
       routineOutput.style.display = 'block';
       routineCards.innerHTML = '';
 
@@ -95,42 +125,75 @@ document.addEventListener('DOMContentLoaded', () => {
         { step: 'Moisturizer', productName: result.moisturizer }
       ];
 
-      // ✅ Model → Product mapping
       const modelProductMap = {
-        "Gentle Facial Cleanser": "micellar",
-        "Refreshing Toner": "refresh-toner",
-        "Hydrating Moisturizer": "hydration-boost"
-        // Add more if needed
-      };
+  "Gentle Facial Cleanser": "cleanser",
+  "Micellar Facial Cleanser": "micellar",
+  "Cream Cleanser": "cleanser",
+  "Deep Clean Balm": "deep-clean-balm",
+  "Pure Oil Cleanser": "oil-cleanser",
+
+  "Refreshing Toner": "refresh-toner",
+  "Hydrating Toner": "refresh-toner",
+  "Soothing Toner": "refresh-toner",            // ✅ added
+
+  "Hydrating Moisturizer": "moisturizer",
+  "Hydration Boost Cream": "hydration-boost",
+  "Hydration Booster Cream": "hydration-booster",
+  "Anti-Aging Cream": "hydration-booster",
+  "Deep Repair Moisturizer": "hydration-booster",  // ✅ added
+
+  "Glow Cream": "glow-cream",
+  "Super Aqua Snail Cream": "snail-cream",
+  "Butter Smooth Cream SPF50+/PA+++": "butter-smooth",
+
+  "Clarifying Emulsion": "clarifying-emulsion",
+  "Salicylic Cleanser": "clarifying-emulsion",      // ✅ added
+
+  "Dewy Glow Jelly Cream": "dewy-jelly",
+  "Glow Serum": "glow-serum",
+  "Rejuvenating Face Serum": "serum",
+
+  "Glow Face Mask": "facemask",
+  "Glow Face Mask (Mask version)": "glow-mask",
+
+  "Revitalizing Eye Cream": "eyecream",
+  "Brightening Eye Cream": "brightening-eye",
+
+  "COCO & EYE - Seed Oil SPF50+/PA+++": "seed-oil",
+  "P:rem Sun Cream SPF50+/PA+++": "prem-suncream",
+  "SPF50+ Sun Shield": "sun-shield"
+};
+
+
+      if (!window.skincareProducts) {
+        console.error("❌ 'skincareProducts' not defined on window");
+        return;
+      }
 
       routineSteps.forEach((item, index) => {
         const mappedId = modelProductMap[item.productName];
         if (!mappedId) {
-          console.warn(`⚠️ No mapping found for: ${item.productName}`);
+          console.warn(`⚠️ No mapping for: ${item.productName}`);
           return;
         }
 
         const product = window.skincareProducts.find(p => p.id === mappedId);
         if (!product) {
-          console.warn(`⚠️ Product ID "${mappedId}" not found.`);
+          console.warn(`⚠️ Product not found for ID: ${mappedId}`);
           return;
         }
 
-        // 🧴 Add a helpful tip for each step
-        let tip = '';
-        if (item.step === 'Cleanser') {
-          tip = "Cleansers remove dirt and oil. Use a gentle cleanser suited to your skin type.";
-        } else if (item.step === 'Toner') {
-          tip = "Toners balance your skin's pH and prepare it for better product absorption.";
-        } else if (item.step === 'Moisturizer') {
-          tip = "Moisturizers lock in hydration and strengthen your skin barrier.";
-        }
+        const tips = {
+          "Cleanser": "Cleansers remove dirt and oil. Use a gentle cleanser suited to your skin type.",
+          "Toner": "Toners balance your skin's pH and prepare it for better product absorption.",
+          "Moisturizer": "Moisturizers lock in hydration and strengthen your skin barrier."
+        };
 
         const card = document.createElement('div');
         card.className = 'routine-card guide-card';
         card.innerHTML = `
           <h3>Step ${index + 1}: ${item.step}</h3>
-          <p class="step-tip">${tip}</p>
+          <p class="step-tip">${tips[item.step]}</p>
           <div class="product-block">
             <img src="${product.image}" alt="${product.name}">
             <div class="product-info">
@@ -138,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <p><strong>Ingredients:</strong> ${product.ingredients.join(', ')}</p>
               <p><strong>How to use:</strong> ${product.usage}</p>
               <p><strong>Price:</strong> ₹${product.price}</p>
-              <button class="routine-btn" onclick='addToCart(${JSON.stringify(product)})'>
+              <button class="routine-btn" onclick='window.addToCart(${JSON.stringify(product).replace(/'/g, "&apos;")})'>
                 Add to Cart
               </button>
             </div>
@@ -154,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ✅ EXPORT GLOBALLY
+// ✅ EXPORT CART METHODS
 window.addToCart = addToCart;
 window.changeQty = changeQty;
 window.toggleCart = toggleCart;
